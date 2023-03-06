@@ -1,0 +1,179 @@
+openapi: 3.0.0
+info:
+  title: Store
+  version: 1.0.0
+servers:
+  - url: http://localhost:9010
+  - url: http://localhost:9020
+  - url: http://localhost:9030
+paths:
+  /v1/orders:
+    get:
+      tags:
+        - default
+      summary: Get orders
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - default
+      summary: Create orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                items:
+                  - name: pizza1
+                    amount: 12.4
+                    currency: USD
+                    comment: no pizza
+                  - name: pizza2
+                    amount: 10.5
+                    currency: USD
+                    comment: have pizza
+                delivery:
+                  delivery_address: Its heare
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/admin/orders:
+    get:
+      tags:
+        - default
+      summary: Get admin orders
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/admin/orders/{order_id}/confirm:
+    post:
+      tags:
+        - default
+      summary: Confirm order
+      requestBody:
+        content: {}
+      parameters:
+        - name: order_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/admin/orders/{order_id}/cancel:
+    post:
+      tags:
+        - default
+      summary: Cancel order
+      requestBody:
+        content: {}
+      parameters:
+        - name: order_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /cook/v1/orders/{order_id}/cooking/start:
+    post:
+      tags:
+        - default
+      summary: Set cooking start
+      requestBody:
+        content: {}
+      parameters:
+        - name: order_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /cook/v1/orders:
+    get:
+      tags:
+        - default
+      summary: Get cooking orders
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /cook/v1/orders/{order_id}/cooking/end:
+    post:
+      tags:
+        - default
+      summary: Set cooking end
+      requestBody:
+        content: {}
+      parameters:
+        - name: order_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /cook/v1/orders/{order_id}/handover:
+    post:
+      tags:
+        - default
+      summary: Set cooking handover
+      requestBody:
+        content: {}
+      parameters:
+        - name: order_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /rider/v1/orders/{order_id}/deliver:
+    post:
+      tags:
+        - default
+      summary: Set deliver
+      requestBody:
+        content: {}
+      parameters:
+        - name: order_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '33'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
